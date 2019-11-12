@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shadowsocks
+spec:
+  replicas: 3
+  strategy: {}
+  selector:
+    matchLabels:
+      app: shadowsocks
+  template:
+    metadata:
+      labels:
+        app: shadowsocks
+    spec:
+      containers:
+        - env:
+            - name: SERVER_PORT
+              value: "2333"
+            - name: METHOD
+              value: aes-256-gcm
+            - name: PASSWORD
+              value: yuyuko
+          image: shadowsocks/shadowsocks-libev
+          name: shadowsocks
+          ports:
+            - containerPort: 2333
+          resources: {}
+      restartPolicy: Always
+status: {}
