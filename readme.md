@@ -1,4 +1,4 @@
-## deply
+## deploy
 
 ### kubctl
 
